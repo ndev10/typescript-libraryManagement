@@ -99,26 +99,8 @@ function GetTitles(bookProperty) {
 function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
-// Demo1 : Defining variables thorugh interfaces
-/*let myBook : Book = {
-    id: 5,
-    title: 'Pride and Prejudice',
-    author: 'Jane Austen',
-    available: true,
-    category: Category.Fiction,
-    pages: 250,
-    markDamaged: (reason: string) => console.log("Damaged: " + reason)
-}
-
-PrintBook(myBook);
-myBook.markDamaged('torn pages');
-
-// Demo2 : Interface function typeo
-let logDamage: DamageLogger;
-logDamage = (reason: string) : void => console.log("Damage Reported " + reason);
-logDamage('coffee stains');*/
-// Demo3 : Interface with class
-var favoriteLibrarian = new classes_1.UniversityLibrarian();
-favoriteLibrarian.name = 'Sharon';
-favoriteLibrarian.assistCustomer('Lynda');
+// Demo1 : Class basic exmaples
+var item = new classes_1.ReferenceItem('Item Title', 2016);
+item.publisher = 'Orely';
+item.printItem();
 //# sourceMappingURL=app.js.map
