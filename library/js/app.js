@@ -1,5 +1,6 @@
 "use strict";
 var enums_1 = require("./enums");
+var classes_1 = require("./classes");
 function GetAllBooks() {
     var books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Fiction },
@@ -99,19 +100,25 @@ function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
 // Demo1 : Defining variables thorugh interfaces
-var myBook = {
+/*let myBook : Book = {
     id: 5,
     title: 'Pride and Prejudice',
     author: 'Jane Austen',
     available: true,
-    category: enums_1.Category.Fiction,
+    category: Category.Fiction,
     pages: 250,
-    markDamaged: function (reason) { return console.log("Damaged: " + reason); }
-};
+    markDamaged: (reason: string) => console.log("Damaged: " + reason)
+}
+
 PrintBook(myBook);
 myBook.markDamaged('torn pages');
+
 // Demo2 : Interface function typeo
-var logDamage;
-logDamage = function (reason) { return console.log("Damage Reported " + reason); };
-logDamage('coffee stains');
+let logDamage: DamageLogger;
+logDamage = (reason: string) : void => console.log("Damage Reported " + reason);
+logDamage('coffee stains');*/
+// Demo3 : Interface with class
+var favoriteLibrarian = new classes_1.UniversityLibrarian();
+favoriteLibrarian.name = 'Sharon';
+favoriteLibrarian.assistCustomer('Lynda');
 //# sourceMappingURL=app.js.map

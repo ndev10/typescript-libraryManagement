@@ -1,6 +1,6 @@
 import { Category } from './enums';
-import { Book,DamageLogger } from './interfaces';
-
+import { Book,DamageLogger,Author,Librarian } from './interfaces';
+import { UniversityLibrarian } from './classes';
 function GetAllBooks () : Book[] {
     let books = [
 		{ id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
@@ -112,7 +112,7 @@ function PrintBook(book: Book): void {
 }
 
 // Demo1 : Defining variables thorugh interfaces
-let myBook : Book = {
+/*let myBook : Book = {
     id: 5,
     title: 'Pride and Prejudice',
     author: 'Jane Austen',
@@ -128,4 +128,10 @@ myBook.markDamaged('torn pages');
 // Demo2 : Interface function typeo
 let logDamage: DamageLogger;
 logDamage = (reason: string) : void => console.log("Damage Reported " + reason);
-logDamage('coffee stains');
+logDamage('coffee stains');*/
+
+// Demo3 : Interface with class
+
+let favoriteLibrarian : Librarian = new UniversityLibrarian();
+favoriteLibrarian.name = 'Sharon';
+favoriteLibrarian.assistCustomer('Lynda');
