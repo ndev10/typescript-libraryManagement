@@ -1,6 +1,7 @@
-enum Category {Biography, Poetry, Fiction, History, Children }
+import { Category } from './enums';
+import { Book,DamageLogger } from './interfaces';
 
-function GetAllBooks () {
+function GetAllBooks () : Book[] {
     let books = [
 		{ id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
 		{ id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
@@ -59,7 +60,7 @@ function CreateCustomer(name: string, age?: number, city?: string) : void {
     }
 }
 
-function GetBookById(id: number) {
+function GetBookById(id: number) : Book {
     const allBooks= GetAllBooks();
     return allBooks.filter(book => book.id === id) [0];
 }
@@ -106,33 +107,25 @@ function GetTitles(bookProperty: any): string[] {
 	return foundTitles;
 }
 
-// Demo1
-/*LogFirstAvailable(GetAllBooks());
-const poetryBooks: string[] = GetBookTitleByCategory(Category.Poetry);
-LogTitles(poetryBooks);*/
+function PrintBook(book: Book): void {
+    console.log(book.title + ' by ' + book.author);
+}
 
-//Demo2 functions default parameter values
-/*LogFirstAvailable();
-const fictionBooks:string[] = GetBookTitleByCategory();
-fictionBooks.forEach((val,indx,arr) => console.log(++indx + " " + val));*/
+// Demo1 : Defining variables thorugh interfaces
+let myBook : Book = {
+    id: 5,
+    title: 'Pride and Prejudice',
+    author: 'Jane Austen',
+    available: true,
+    category: Category.Fiction,
+    pages: 250,
+    markDamaged: (reason: string) => console.log("Damaged: " + reason)
+}
 
-// Demo3 Optional parameter
-/*CreateCustomer("dev");
-CreateCustomer("Dev",22);
-CreateCustomer("Dev",22,"Pune");*/
+PrintBook(myBook);
+myBook.markDamaged('torn pages');
 
-// Demo4 var args 
-/*const checkoutBooks: string[] = GetCheckoutBooks("Lib1",1,2,3);
-checkoutBooks.forEach(title => console.log(title));*/
-
-// Demo5 lamdas exmpamle
-/*let IdGenerator : (chars: string, nums: number) => string;
-IdGenerator = (name:string, id:number) => id + name;
-
-let myId = IdGenerator("dev",123);
-console.log(myId);*/
-
-// Demo 6 method overloading
-//let checkedOutBooks = GetTitles('false');
-let checkedOutBooks = GetTitles('James Joyce');
-checkedOutBooks.forEach(title => console.log(title));
+// Demo2 : Interface function typeo
+let logDamage: DamageLogger;
+logDamage = (reason: string) : void => console.log("Damage Reported " + reason);
+logDamage('coffee stains');

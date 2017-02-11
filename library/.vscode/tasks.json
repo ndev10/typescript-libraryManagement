@@ -7,6 +7,7 @@
     "args": ["--target", "ES5",
 			 "--outDir", "js",
 			 "--sourceMap",
+             "--module", "commonjs",
 			 "--watch",
 			 "app.ts"],
     "showOutput": "always"
