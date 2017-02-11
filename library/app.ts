@@ -1,6 +1,6 @@
 import { Category } from './enums';
 import { Book,DamageLogger,Author,Librarian } from './interfaces';
-import { UniversityLibrarian,ReferenceItem } from './classes';
+import { UniversityLibrarian,ReferenceItem,Encyclopedia } from './classes';
 function GetAllBooks () : Book[] {
     let books = [
 		{ id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
@@ -112,6 +112,10 @@ function PrintBook(book: Book): void {
 }
 
 // Demo1 : Class basic exmaples
-let item: ReferenceItem = new ReferenceItem('Item Title',2016);
+/*let item: ReferenceItem = new ReferenceItem('Item Title',2016);
 item.publisher = 'Orely';
-item.printItem();
+item.printItem();*/
+
+// Demo2 : Inheritance
+let encylopedia = new Encyclopedia("Encyclopedia",2000,2);
+encylopedia.printItem();

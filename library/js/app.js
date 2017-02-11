@@ -100,7 +100,10 @@ function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
 // Demo1 : Class basic exmaples
-var item = new classes_1.ReferenceItem('Item Title', 2016);
+/*let item: ReferenceItem = new ReferenceItem('Item Title',2016);
 item.publisher = 'Orely';
-item.printItem();
+item.printItem();*/
+// Demo2 : Inheritance
+var encylopedia = new classes_1.Encyclopedia("Encyclopedia", 2000, 2);
+encylopedia.printItem();
 //# sourceMappingURL=app.js.map
