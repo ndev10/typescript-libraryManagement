@@ -59,6 +59,25 @@ function CreateCustomer(name, age, city) {
         console.log("city is " + city);
     }
 }
+function GetBookById(id) {
+    var allBooks = GetAllBooks();
+    return allBooks.filter(function (book) { return book.id === id; })[0];
+}
+function GetCheckoutBooks(customer) {
+    var bookIds = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        bookIds[_i - 1] = arguments[_i];
+    }
+    console.log("Checkout for customer " + customer);
+    var booksCheckout = [];
+    bookIds.forEach(function (bookId) {
+        var book = GetBookById(bookId);
+        if (book.available) {
+            booksCheckout.push(book.title);
+        }
+    });
+    return booksCheckout;
+}
 // Demo1
 /*LogFirstAvailable(GetAllBooks());
 const poetryBooks: string[] = GetBookTitleByCategory(Category.Poetry);
@@ -68,7 +87,10 @@ LogTitles(poetryBooks);*/
 const fictionBooks:string[] = GetBookTitleByCategory();
 fictionBooks.forEach((val,indx,arr) => console.log(++indx + " " + val));*/
 // Demo3 Optional parameter
-CreateCustomer("dev");
-CreateCustomer("Dev", 22);
-CreateCustomer("Dev", 22, "Pune");
+/*CreateCustomer("dev");
+CreateCustomer("Dev",22);
+CreateCustomer("Dev",22,"Pune");*/
+// Demo4 var args 
+var checkoutBooks = GetCheckoutBooks("Lib1", 1, 2, 3);
+checkoutBooks.forEach(function (title) { return console.log(title); });
 //# sourceMappingURL=app.js.map

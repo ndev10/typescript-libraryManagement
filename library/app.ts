@@ -59,6 +59,27 @@ function CreateCustomer(name: string, age?: number, city?: string) : void {
     }
 }
 
+function GetBookById(id: number) {
+    const allBooks= GetAllBooks();
+    return allBooks.filter(book => book.id === id) [0];
+}
+
+function GetCheckoutBooks(customer: string, ... bookIds: number[]): string[] {
+    console.log("Checkout for customer " + customer);
+
+    let booksCheckout: string[] = [];
+
+    bookIds.forEach(bookId => {
+        let book = GetBookById(bookId);
+        if (book.available) {
+            booksCheckout.push(book.title);
+        }
+    });
+
+    return booksCheckout;
+
+}
+
 // Demo1
 /*LogFirstAvailable(GetAllBooks());
 const poetryBooks: string[] = GetBookTitleByCategory(Category.Poetry);
@@ -70,6 +91,10 @@ const fictionBooks:string[] = GetBookTitleByCategory();
 fictionBooks.forEach((val,indx,arr) => console.log(++indx + " " + val));*/
 
 // Demo3 Optional parameter
-CreateCustomer("dev");
+/*CreateCustomer("dev");
 CreateCustomer("Dev",22);
-CreateCustomer("Dev",22,"Pune");
+CreateCustomer("Dev",22,"Pune");*/
+
+// Demo4 var args 
+const checkoutBooks: string[] = GetCheckoutBooks("Lib1",1,2,3);
+checkoutBooks.forEach(title => console.log(title));
