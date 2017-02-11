@@ -78,6 +78,29 @@ function GetCheckoutBooks(customer) {
     });
     return booksCheckout;
 }
+function GetTitles(bookProperty) {
+    var allBooks = GetAllBooks();
+    var foundTitles = [];
+    if (typeof bookProperty == 'string') {
+        // get all books by a particular author
+        for (var _i = 0, allBooks_2 = allBooks; _i < allBooks_2.length; _i++) {
+            var book = allBooks_2[_i];
+            if (book.author === bookProperty) {
+                foundTitles.push(book.title);
+            }
+        }
+    }
+    else if (typeof bookProperty == 'boolean') {
+        // get all books based on specified availability
+        for (var _a = 0, allBooks_3 = allBooks; _a < allBooks_3.length; _a++) {
+            var book = allBooks_3[_a];
+            if (book.available === bookProperty) {
+                foundTitles.push(book.title);
+            }
+        }
+    }
+    return foundTitles;
+}
 // Demo1
 /*LogFirstAvailable(GetAllBooks());
 const poetryBooks: string[] = GetBookTitleByCategory(Category.Poetry);
@@ -94,8 +117,13 @@ CreateCustomer("Dev",22,"Pune");*/
 /*const checkoutBooks: string[] = GetCheckoutBooks("Lib1",1,2,3);
 checkoutBooks.forEach(title => console.log(title));*/
 // Demo5 lamdas exmpamle
-var IdGenerator;
-IdGenerator = function (name, id) { return id + name; };
-var myId = IdGenerator("dev", 123);
-console.log(myId);
+/*let IdGenerator : (chars: string, nums: number) => string;
+IdGenerator = (name:string, id:number) => id + name;
+
+let myId = IdGenerator("dev",123);
+console.log(myId);*/
+// Demo 6 method overloading
+//let checkedOutBooks = GetTitles('false');
+var checkedOutBooks = GetTitles('James Joyce');
+checkedOutBooks.forEach(function (title) { return console.log(title); });
 //# sourceMappingURL=app.js.map

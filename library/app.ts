@@ -80,6 +80,32 @@ function GetCheckoutBooks(customer: string, ... bookIds: number[]): string[] {
 
 }
 
+function GetTitles(author: string): string[];
+function GetTitles(available: boolean): string[];
+function GetTitles(bookProperty: any): string[] {
+	const allBooks = GetAllBooks();
+	const foundTitles: string[] = [];
+	
+	if(typeof bookProperty == 'string') {
+		// get all books by a particular author
+		for(let book of allBooks) {
+			if(book.author === bookProperty) {
+				foundTitles.push(book.title);
+			}
+		}
+	}
+	
+	else if(typeof bookProperty == 'boolean') {
+		// get all books based on specified availability
+		for(let book of allBooks) {
+			if(book.available === bookProperty) {
+				foundTitles.push(book.title);
+			}
+		}
+	}
+	return foundTitles;
+}
+
 // Demo1
 /*LogFirstAvailable(GetAllBooks());
 const poetryBooks: string[] = GetBookTitleByCategory(Category.Poetry);
@@ -100,8 +126,13 @@ CreateCustomer("Dev",22,"Pune");*/
 checkoutBooks.forEach(title => console.log(title));*/
 
 // Demo5 lamdas exmpamle
-let IdGenerator : (chars: string, nums: number) => string;
+/*let IdGenerator : (chars: string, nums: number) => string;
 IdGenerator = (name:string, id:number) => id + name;
 
 let myId = IdGenerator("dev",123);
-console.log(myId);
+console.log(myId);*/
+
+// Demo 6 method overloading
+//let checkedOutBooks = GetTitles('false');
+let checkedOutBooks = GetTitles('James Joyce');
+checkedOutBooks.forEach(title => console.log(title));
