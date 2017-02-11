@@ -47,6 +47,9 @@ var Encyclopedia = (function (_super) {
         _super.prototype.printItem.call(this);
         console.log("Edition: " + this.edition + " (" + this.year + ")");
     };
+    Encyclopedia.prototype.printCitation = function () {
+        console.log(this.title + " - " + this.year);
+    };
     return Encyclopedia;
 }(ReferenceItem));
 exports.Encyclopedia = Encyclopedia;

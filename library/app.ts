@@ -119,3 +119,19 @@ item.printItem();*/
 // Demo2 : Inheritance
 let encylopedia = new Encyclopedia("Encyclopedia",2000,2);
 encylopedia.printItem();
+encylopedia.printCitation();
+
+let Newspaper = class extends ReferenceItem {
+    printCitation(): void {
+        console.log(`Newspaper: ${this.title}`);
+    }
+}
+
+let myPaper = new Newspaper('The Gazette', 2016);
+myPaper.printCitation();
+
+class Novel extends class { title: string } {
+    mainCharacter: string;
+}
+
+let favoriteNovel = new Novel();
