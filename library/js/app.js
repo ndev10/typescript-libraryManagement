@@ -91,6 +91,11 @@ fictionBooks.forEach((val,indx,arr) => console.log(++indx + " " + val));*/
 CreateCustomer("Dev",22);
 CreateCustomer("Dev",22,"Pune");*/
 // Demo4 var args 
-var checkoutBooks = GetCheckoutBooks("Lib1", 1, 2, 3);
-checkoutBooks.forEach(function (title) { return console.log(title); });
+/*const checkoutBooks: string[] = GetCheckoutBooks("Lib1",1,2,3);
+checkoutBooks.forEach(title => console.log(title));*/
+// Demo5 lamdas exmpamle
+var IdGenerator;
+IdGenerator = function (name, id) { return id + name; };
+var myId = IdGenerator("dev", 123);
+console.log(myId);
 //# sourceMappingURL=app.js.map

@@ -96,5 +96,12 @@ CreateCustomer("Dev",22);
 CreateCustomer("Dev",22,"Pune");*/
 
 // Demo4 var args 
-const checkoutBooks: string[] = GetCheckoutBooks("Lib1",1,2,3);
-checkoutBooks.forEach(title => console.log(title));
+/*const checkoutBooks: string[] = GetCheckoutBooks("Lib1",1,2,3);
+checkoutBooks.forEach(title => console.log(title));*/
+
+// Demo5 lamdas exmpamle
+let IdGenerator : (chars: string, nums: number) => string;
+IdGenerator = (name:string, id:number) => id + name;
+
+let myId = IdGenerator("dev",123);
+console.log(myId);
