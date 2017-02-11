@@ -46,12 +46,30 @@ function LogTitles(titles : string[]) {
     }
 }
 
+function CreateCustomer(name: string, age?: number, city?: string) : void {
+    console.log("---------------------------");
+    console.log("name is " + name);
+
+    if (age) {
+        console.log("age is " + age);
+    }
+
+     if (city) {
+        console.log("city is " + city);
+    }
+}
+
 // Demo1
 /*LogFirstAvailable(GetAllBooks());
 const poetryBooks: string[] = GetBookTitleByCategory(Category.Poetry);
 LogTitles(poetryBooks);*/
 
 //Demo2 functions default parameter values
-LogFirstAvailable();
+/*LogFirstAvailable();
 const fictionBooks:string[] = GetBookTitleByCategory();
-fictionBooks.forEach((val,indx,arr) => console.log(++indx + " " + val));
+fictionBooks.forEach((val,indx,arr) => console.log(++indx + " " + val));*/
+
+// Demo3 Optional parameter
+CreateCustomer("dev");
+CreateCustomer("Dev",22);
+CreateCustomer("Dev",22,"Pune");
