@@ -1,6 +1,6 @@
 import { Category } from './enums';
 import { Book,DamageLogger,Author,Librarian } from './interfaces';
-import { UniversityLibrarian } from './classes';
+import { UniversityLibrarian,ReferenceItem,Encyclopedia } from './classes';
 function GetAllBooks () : Book[] {
     let books = [
 		{ id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
@@ -111,27 +111,27 @@ function PrintBook(book: Book): void {
     console.log(book.title + ' by ' + book.author);
 }
 
-// Demo1 : Defining variables thorugh interfaces
-/*let myBook : Book = {
-    id: 5,
-    title: 'Pride and Prejudice',
-    author: 'Jane Austen',
-    available: true,
-    category: Category.Fiction,
-    pages: 250,
-    markDamaged: (reason: string) => console.log("Damaged: " + reason)
+// Demo1 : Class basic exmaples
+/*let item: ReferenceItem = new ReferenceItem('Item Title',2016);
+item.publisher = 'Orely';
+item.printItem();*/
+
+// Demo2 : Inheritance
+let encylopedia = new Encyclopedia("Encyclopedia",2000,2);
+encylopedia.printItem();
+encylopedia.printCitation();
+
+let Newspaper = class extends ReferenceItem {
+    printCitation(): void {
+        console.log(`Newspaper: ${this.title}`);
+    }
 }
 
-PrintBook(myBook);
-myBook.markDamaged('torn pages');
+let myPaper = new Newspaper('The Gazette', 2016);
+myPaper.printCitation();
 
-// Demo2 : Interface function typeo
-let logDamage: DamageLogger;
-logDamage = (reason: string) : void => console.log("Damage Reported " + reason);
-logDamage('coffee stains');*/
+class Novel extends class { title: string } {
+    mainCharacter: string;
+}
 
-// Demo3 : Interface with class
-
-let favoriteLibrarian : Librarian = new UniversityLibrarian();
-favoriteLibrarian.name = 'Sharon';
-favoriteLibrarian.assistCustomer('Lynda');
+let favoriteNovel = new Novel();

@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var enums_1 = require("./enums");
 var classes_1 = require("./classes");
 function GetAllBooks() {
@@ -99,26 +104,36 @@ function GetTitles(bookProperty) {
 function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
-// Demo1 : Defining variables thorugh interfaces
-/*let myBook : Book = {
-    id: 5,
-    title: 'Pride and Prejudice',
-    author: 'Jane Austen',
-    available: true,
-    category: Category.Fiction,
-    pages: 250,
-    markDamaged: (reason: string) => console.log("Damaged: " + reason)
-}
-
-PrintBook(myBook);
-myBook.markDamaged('torn pages');
-
-// Demo2 : Interface function typeo
-let logDamage: DamageLogger;
-logDamage = (reason: string) : void => console.log("Damage Reported " + reason);
-logDamage('coffee stains');*/
-// Demo3 : Interface with class
-var favoriteLibrarian = new classes_1.UniversityLibrarian();
-favoriteLibrarian.name = 'Sharon';
-favoriteLibrarian.assistCustomer('Lynda');
+// Demo1 : Class basic exmaples
+/*let item: ReferenceItem = new ReferenceItem('Item Title',2016);
+item.publisher = 'Orely';
+item.printItem();*/
+// Demo2 : Inheritance
+var encylopedia = new classes_1.Encyclopedia("Encyclopedia", 2000, 2);
+encylopedia.printItem();
+encylopedia.printCitation();
+var Newspaper = (function (_super) {
+    __extends(class_1, _super);
+    function class_1() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    class_1.prototype.printCitation = function () {
+        console.log("Newspaper: " + this.title);
+    };
+    return class_1;
+}(classes_1.ReferenceItem));
+var myPaper = new Newspaper('The Gazette', 2016);
+myPaper.printCitation();
+var Novel = (function (_super) {
+    __extends(Novel, _super);
+    function Novel() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Novel;
+}((function () {
+    function class_2() {
+    }
+    return class_2;
+}())));
+var favoriteNovel = new Novel();
 //# sourceMappingURL=app.js.map
