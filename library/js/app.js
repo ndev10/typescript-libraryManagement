@@ -6,6 +6,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var enums_1 = require("./enums");
 var classes_1 = require("./classes");
+var encyclopedia_1 = require("./encyclopedia");
+var utilityFunctions_1 = require("./lib/utilityFunctions");
 function GetAllBooks() {
     var books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Fiction },
@@ -104,12 +106,8 @@ function GetTitles(bookProperty) {
 function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
-// Demo1 : Class basic exmaples
-/*let item: ReferenceItem = new ReferenceItem('Item Title',2016);
-item.publisher = 'Orely';
-item.printItem();*/
-// Demo2 : Inheritance
-var encylopedia = new classes_1.Encyclopedia("Encyclopedia", 2000, 2);
+// Demo1: Inheritance
+var encylopedia = new encyclopedia_1.default("Encyclopedia", 2000, 2);
 encylopedia.printItem();
 encylopedia.printCitation();
 var Newspaper = (function (_super) {
@@ -122,6 +120,11 @@ var Newspaper = (function (_super) {
     };
     return class_1;
 }(classes_1.ReferenceItem));
+// Demo2 Import functions as module.
+var maxBookAllowed = utilityFunctions_1.MaxBooksAllowed(2);
+console.log(maxBookAllowed);
+var fee = utilityFunctions_1.CalculateLateFee(2);
+console.log(fee);
 var myPaper = new Newspaper('The Gazette', 2016);
 myPaper.printCitation();
 var Novel = (function (_super) {

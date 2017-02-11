@@ -1,6 +1,8 @@
 import { Category } from './enums';
 import { Book,DamageLogger,Author,Librarian } from './interfaces';
-import { UniversityLibrarian,ReferenceItem,Encyclopedia } from './classes';
+import { UniversityLibrarian,ReferenceItem } from './classes';
+import refBook from './encyclopedia';
+import { CalculateLateFee as CalcFee, MaxBooksAllowed } from './lib/utilityFunctions';
 function GetAllBooks () : Book[] {
     let books = [
 		{ id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
@@ -111,13 +113,9 @@ function PrintBook(book: Book): void {
     console.log(book.title + ' by ' + book.author);
 }
 
-// Demo1 : Class basic exmaples
-/*let item: ReferenceItem = new ReferenceItem('Item Title',2016);
-item.publisher = 'Orely';
-item.printItem();*/
 
-// Demo2 : Inheritance
-let encylopedia = new Encyclopedia("Encyclopedia",2000,2);
+// Demo1: Inheritance
+let encylopedia = new refBook("Encyclopedia",2000,2);
 encylopedia.printItem();
 encylopedia.printCitation();
 
@@ -126,6 +124,14 @@ let Newspaper = class extends ReferenceItem {
         console.log(`Newspaper: ${this.title}`);
     }
 }
+
+// Demo2 Import functions as module.
+
+let maxBookAllowed: number = MaxBooksAllowed(2);
+console.log(maxBookAllowed);
+
+let fee: number = CalcFee(2);
+console.log(fee);
 
 let myPaper = new Newspaper('The Gazette', 2016);
 myPaper.printCitation();
