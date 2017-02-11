@@ -8,14 +8,15 @@ var Category;
 })(Category || (Category = {}));
 function GetAllBooks() {
     var books = [
-        { title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
-        { title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
-        { title: 'I Know Why the Caged Bird Sings', author: 'Maya Angelou', available: true, category: Category.Poetry },
-        { title: 'Moby Dick', author: 'Herman Melville', available: true, category: Category.Fiction }
+        { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
+        { id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
+        { id: 3, title: 'I Know Why the Caged Bird Sings', author: 'Maya Angelou', available: true, category: Category.Poetry },
+        { id: 4, title: 'Moby Dick', author: 'Herman Melville', available: true, category: Category.Fiction }
     ];
     return books;
 }
 function LogFirstAvailable(books) {
+    if (books === void 0) { books = GetAllBooks(); }
     var numberOfBooks = books.length;
     var firstAvailable = '';
     for (var _i = 0, books_1 = books; _i < books_1.length; _i++) {
@@ -29,6 +30,7 @@ function LogFirstAvailable(books) {
     console.log("First Availabe book is " + firstAvailable);
 }
 function GetBookTitleByCategory(categoryFilter) {
+    if (categoryFilter === void 0) { categoryFilter = Category.Fiction; }
     console.log("Category filter value " + categoryFilter);
     console.log("Category filter string " + Category[categoryFilter]);
     var filteredTitles = [];
@@ -47,7 +49,12 @@ function LogTitles(titles) {
         console.log(title);
     }
 }
-LogFirstAvailable(GetAllBooks());
-var poetryBooks = GetBookTitleByCategory(Category.Fiction);
-LogTitles(poetryBooks);
+// Demo1
+/*LogFirstAvailable(GetAllBooks());
+const poetryBooks: string[] = GetBookTitleByCategory(Category.Poetry);
+LogTitles(poetryBooks);*/
+//Demo2 functions default parameter values
+LogFirstAvailable();
+var fictionBooks = GetBookTitleByCategory();
+fictionBooks.forEach(function (val, indx, arr) { return console.log(++indx + " " + val); });
 //# sourceMappingURL=app.js.map

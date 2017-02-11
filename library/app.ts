@@ -2,15 +2,15 @@ enum Category {Biography, Poetry, Fiction, History, Children }
 
 function GetAllBooks () {
     let books = [
-		{ title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
-		{ title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
-		{ title: 'I Know Why the Caged Bird Sings', author: 'Maya Angelou', available: true, category: Category.Poetry },
-		{ title: 'Moby Dick', author: 'Herman Melville', available: true, category: Category.Fiction }	
+		{ id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
+		{ id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
+		{ id: 3, title: 'I Know Why the Caged Bird Sings', author: 'Maya Angelou', available: true, category: Category.Poetry },
+		{ id: 4, title: 'Moby Dick', author: 'Herman Melville', available: true, category: Category.Fiction }	
 	];
 	return books;
 }
 
-function LogFirstAvailable(books) : void {
+function LogFirstAvailable(books = GetAllBooks()) : void {
     let numberOfBooks: number = books.length;
     let firstAvailable: string = '';
    
@@ -25,7 +25,7 @@ function LogFirstAvailable(books) : void {
     console.log("First Availabe book is " + firstAvailable);
 }
 
-function GetBookTitleByCategory(categoryFilter : Category) : Array<string> {
+function GetBookTitleByCategory(categoryFilter : Category = Category.Fiction) : Array<string> {
     console.log("Category filter value " + categoryFilter);
     console.log("Category filter string " + Category[categoryFilter]);
 
@@ -46,7 +46,12 @@ function LogTitles(titles : string[]) {
     }
 }
 
-LogFirstAvailable(GetAllBooks());
+// Demo1
+/*LogFirstAvailable(GetAllBooks());
+const poetryBooks: string[] = GetBookTitleByCategory(Category.Poetry);
+LogTitles(poetryBooks);*/
 
-const poetryBooks: string[] = GetBookTitleByCategory(Category.Fiction);
-LogTitles(poetryBooks);
+//Demo2 functions default parameter values
+LogFirstAvailable();
+const fictionBooks:string[] = GetBookTitleByCategory();
+fictionBooks.forEach((val,indx,arr) => console.log(++indx + " " + val));
