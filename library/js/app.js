@@ -1,13 +1,6 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var enums_1 = require("./enums");
-var classes_1 = require("./classes");
-var encyclopedia_1 = require("./encyclopedia");
-var utilityFunctions_1 = require("./lib/utilityFunctions");
+var shelf_1 = require("./shelf");
 function GetAllBooks() {
     var books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Fiction },
@@ -106,37 +99,33 @@ function GetTitles(bookProperty) {
 function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
-// Demo1: Inheritance
-var encylopedia = new encyclopedia_1.default("Encyclopedia", 2000, 2);
-encylopedia.printItem();
-encylopedia.printCitation();
-var Newspaper = (function (_super) {
-    __extends(class_1, _super);
-    function class_1() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    class_1.prototype.printCitation = function () {
-        console.log("Newspaper: " + this.title);
-    };
-    return class_1;
-}(classes_1.ReferenceItem));
-// Demo2 Import functions as module.
-var maxBookAllowed = utilityFunctions_1.MaxBooksAllowed(2);
-console.log(maxBookAllowed);
-var fee = utilityFunctions_1.CalculateLateFee(2);
-console.log(fee);
-var myPaper = new Newspaper('The Gazette', 2016);
-myPaper.printCitation();
-var Novel = (function (_super) {
-    __extends(Novel, _super);
-    function Novel() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return Novel;
-}((function () {
-    function class_2() {
-    }
-    return class_2;
-}())));
-var favoriteNovel = new Novel();
+var inventory = [
+    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: enums_1.Category.Software },
+    { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: enums_1.Category.Software },
+    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: enums_1.Category.Software },
+    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: enums_1.Category.Software }
+];
+// Demo 1 Generic Arrays
+/*let purgedBooks: Array<Book> = Purge(inventory);
+purgedBooks.forEach(book => console.log(book.title));
+
+let purgedNums: Array<number> = Purge<number>([1, 2, 3, 4]);
+console.log(purgedNums);*/
+// Demo2 Generic Classes
+var bookShelf = new shelf_1.default();
+inventory.forEach(function (book) { return bookShelf.add(book); });
+var firstBook = bookShelf.getFirst();
+bookShelf.printTitles();
+var softwareBook = bookShelf.find('Code Complete');
+console.log(softwareBook.title + " (" + softwareBook.author + ")");
+var magazines = [
+    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+    { title: 'Five Points', publisher: 'GSU' }
+];
+var magazineShelf = new shelf_1.default();
+magazines.forEach(function (mag) { return magazineShelf.add(mag); });
+var firstMagazine = magazineShelf.getFirst();
+var magazine = magazineShelf.find('Five Points');
+console.log(magazine.title + " (" + magazine.publisher + ")");
 //# sourceMappingURL=app.js.map
