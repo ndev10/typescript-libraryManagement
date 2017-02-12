@@ -106,6 +106,6 @@ var inventory = [
     { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: enums_1.Category.Software }
 ];
 // Demo1 with lodash
-var snakeCaseTitle = _.snakeCase('For Whom the Bell Tolls');
-console.log(snakeCaseTitle);
+var snakeCaseTitleStr = _.snakeCase('For Whom the Bell Tolls');
+console.log(snakeCaseTitleStr);
 //# sourceMappingURL=app.js.map

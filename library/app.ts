@@ -1,3 +1,4 @@
+
 import { Category } from './enums';
 import { Book,DamageLogger,Author,Librarian,Magazine } from './interfaces';
 import { UniversityLibrarian,ReferenceItem } from './classes';
@@ -122,5 +123,5 @@ let inventory: Array<Book> = [
     { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }];
 
 // Demo1 with lodash
-let snakeCaseTitle = _.snakeCase('For Whom the Bell Tolls');
-console.log(snakeCaseTitle);
+let snakeCaseTitleStr = _.snakeCase('For Whom the Bell Tolls');
+console.log(snakeCaseTitleStr);
