@@ -1,6 +1,6 @@
 "use strict";
 var enums_1 = require("./enums");
-var shelf_1 = require("./shelf");
+var _ = require("lodash");
 function GetAllBooks() {
     var books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Fiction },
@@ -105,27 +105,7 @@ var inventory = [
     { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: enums_1.Category.Software },
     { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: enums_1.Category.Software }
 ];
-// Demo 1 Generic Arrays
-/*let purgedBooks: Array<Book> = Purge(inventory);
-purgedBooks.forEach(book => console.log(book.title));
-
-let purgedNums: Array<number> = Purge<number>([1, 2, 3, 4]);
-console.log(purgedNums);*/
-// Demo2 Generic Classes
-var bookShelf = new shelf_1.default();
-inventory.forEach(function (book) { return bookShelf.add(book); });
-var firstBook = bookShelf.getFirst();
-bookShelf.printTitles();
-var softwareBook = bookShelf.find('Code Complete');
-console.log(softwareBook.title + " (" + softwareBook.author + ")");
-var magazines = [
-    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
-    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
-    { title: 'Five Points', publisher: 'GSU' }
-];
-var magazineShelf = new shelf_1.default();
-magazines.forEach(function (mag) { return magazineShelf.add(mag); });
-var firstMagazine = magazineShelf.getFirst();
-var magazine = magazineShelf.find('Five Points');
-console.log(magazine.title + " (" + magazine.publisher + ")");
+// Demo1 with lodash
+var snakeCaseTitle = _.snakeCase('For Whom the Bell Tolls');
+console.log(snakeCaseTitle);
 //# sourceMappingURL=app.js.map
